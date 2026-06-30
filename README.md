@@ -20,4 +20,4 @@ python avedex.py
 
 ## Autor
 
-Seu Nome
+Leonan P R Silva
