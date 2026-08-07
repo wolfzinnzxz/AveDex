@@ -72,6 +72,7 @@ catalogo_aves = [
         "alimentacao": "Insetos, frutos e pequenos animais",
         "curiosidade": "Seu canto lembra a expressão bem-te-vi."
     },
+
     {
         "codigo": "2",
         "nome_popular": "Canário-da-terra",
@@ -80,6 +81,7 @@ catalogo_aves = [
         "alimentacao": "Sementes e pequenos insetos",
         "curiosidade": "O macho possui plumagem amarela intensa."
     },
+
     {
         "codigo": "3",
         "nome_popular": "João-de-barro",
@@ -87,6 +89,24 @@ catalogo_aves = [
         "habitat": "Campos, cidades e áreas rurais",
         "alimentacao": "Insetos e pequenos invertebrados",
         "curiosidade": "Constrói um ninho de barro característico."
+    },
+
+    {
+        "codigo": "4",
+        "nome_popular": "Arara-azul",
+        "nome_cientifico": "Anodorhynchus hyacinthinus",
+        "habitat": "Pantanal, áreas de cerrado e matas",
+        "alimentacao": "Frutos, sementes e castanhas",
+        "curiosidade": "É a maior arara do mundo."
+    },
+
+    {
+        "codigo": "5",
+        "nome_popular": "Tucano-toco",
+        "nome_cientifico": "Ramphastos toco",
+        "habitat": "Florestas, cerrados e áreas abertas",
+        "alimentacao": "Frutas, insetos e pequenos animais",
+        "curiosidade": "Possui um grande bico que ajuda na alimentação."
     }
 ]
 
