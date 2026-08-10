@@ -104,6 +104,24 @@ catalogo_aves = [
         "habitat": "Campos e áreas abertas",
         "alimentacao": "Sementes e insetos",
         "curiosidade": "O macho possui plumagem amarela."
+    },
+
+    {
+        "id": "4",
+        "nome_popular": "Arara-azul",
+        "nome_cientifico": "Anodorhynchus hyacinthinus",
+        "habitat": "Pantanal, cerrado e áreas de mata",
+        "alimentacao": "Frutos, sementes e castanhas",
+        "curiosidade": "É uma das maiores espécies de arara do mundo."
+    },
+
+    {
+        "id": "5",
+        "nome_popular": "Tucano-toco",
+        "nome_cientifico": "Ramphastos toco",
+        "habitat": "Cerrados, florestas e áreas abertas",
+        "alimentacao": "Frutas, insetos e pequenos animais",
+        "curiosidade": "Possui um grande bico que ajuda na alimentação."
     }
 ]
 
