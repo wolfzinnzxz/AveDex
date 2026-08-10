@@ -32,17 +32,34 @@ def buscar_ave_por_id(catalogo, id_procurado):
     return None
 
 
-def exibir_detalhes(ave):
+def exibir_detalhes_ave(ave):
     print()
     exibir_linha()
     print("DETALHES DA AVE")
     exibir_linha()
 
+    print(f"ID: {ave['id']}")
     print(f"Nome popular: {ave['nome_popular']}")
     print(f"Nome científico: {ave['nome_cientifico']}")
     print(f"Habitat: {ave['habitat']}")
     print(f"Alimentação: {ave['alimentacao']}")
-    print(f"Curiosidade: {ave['curiosidade']}")
+    print(f"Curiosidade: {ave.get('curiosidade', 'Não informada')}")
+
+
+def selecionar_ave_por_id(catalogo):
+    listar_aves(catalogo)
+
+    id_escolhido = input("\nDigite o ID da ave: ").strip()
+
+    ave_encontrada = buscar_ave_por_id(
+        catalogo,
+        id_escolhido
+    )
+
+    if ave_encontrada is None:
+        print("Ave não encontrada. Confira o ID informado.")
+    else:
+        exibir_detalhes_ave(ave_encontrada)
 
 
 def mostrar_boas_vindas(nome_usuario):
@@ -58,6 +75,8 @@ def mostrar_sobre():
 def pausar():
     input("\nPressione ENTER para voltar ao menu...")
 
+
+# Catálogo de aves
 
 catalogo_aves = [
     {
@@ -99,7 +118,6 @@ nome_usuario = input("Digite seu nome: ").strip()
 
 opcao_menu = ""
 
-
 while opcao_menu != "0":
 
     exibir_menu()
@@ -108,45 +126,24 @@ while opcao_menu != "0":
 
     print()
 
-
     if opcao_menu == "1":
         listar_aves(catalogo_aves)
 
-
     elif opcao_menu == "2":
-
-        listar_aves(catalogo_aves)
-
-        id_escolhido = input("\nDigite o ID da ave: ").strip()
-
-        ave_encontrada = buscar_ave_por_id(
-            catalogo_aves,
-            id_escolhido
-        )
-
-        if ave_encontrada is None:
-            print("Ave não encontrada.")
-
-        else:
-            exibir_detalhes(ave_encontrada)
-
+        selecionar_ave_por_id(catalogo_aves)
 
     elif opcao_menu == "3":
         mostrar_boas_vindas(nome_usuario)
 
-
     elif opcao_menu == "4":
         mostrar_sobre()
-
 
     elif opcao_menu == "0":
         print("Encerrando a AveDex.")
         print(f"Até logo, {nome_usuario}!")
 
-
     else:
         print("Opção inválida.")
-
 
     if opcao_menu != "0":
         pausar()
