@@ -41,6 +41,9 @@ def exibir_detalhes_ave(ave):
     print(f"ID: {ave['id']}")
     print(f"Nome popular: {ave['nome_popular']}")
     print(f"Nome científico: {ave['nome_cientifico']}")
+    print(f"Ordem: {ave['ordem']}")
+    print(f"Família: {ave['familia']}")
+    print(f"Dieta: {ave['dieta_tipo']}")
     print(f"Habitat: {ave['habitat']}")
     print(f"Alimentação: {ave['alimentacao']}")
     print(f"Curiosidade: {ave.get('curiosidade', 'Não informada')}")
@@ -80,45 +83,60 @@ def pausar():
 
 catalogo_aves = [
     {
-        "id": "1",
+        "id": 1,
         "nome_popular": "Bem-te-vi",
         "nome_cientifico": "Pitangus sulphuratus",
+        "ordem": "Passeriformes",
+        "familia": "Tyrannidae",
+        "dieta_tipo": "Onívora",
         "habitat": "Áreas abertas, cidades e bordas de florestas",
         "alimentacao": "Insetos, frutos e pequenos animais",
-        "curiosidade": "Seu canto lembra a expressão bem-te-vi."
+        "curiosidade": "Seu canto parece dizer o próprio nome."
     },
 
     {
-        "id": "2",
+        "id": 2,
         "nome_popular": "João-de-barro",
         "nome_cientifico": "Furnarius rufus",
+        "ordem": "Passeriformes",
+        "familia": "Furnariidae",
+        "dieta_tipo": "Insetívora",
         "habitat": "Campos, cidades e áreas rurais",
-        "alimentacao": "Insetos e pequenos invertebrados",
-        "curiosidade": "Constrói um ninho de barro."
+        "alimentacao": "Insetos e outros invertebrados",
+        "curiosidade": "É conhecido por construir ninhos de barro."
     },
 
     {
-        "id": "3",
+        "id": 3,
         "nome_popular": "Canário-da-terra",
         "nome_cientifico": "Sicalis flaveola",
+        "ordem": "Passeriformes",
+        "familia": "Thraupidae",
+        "dieta_tipo": "Granívora",
         "habitat": "Campos e áreas abertas",
-        "alimentacao": "Sementes e insetos",
-        "curiosidade": "O macho possui plumagem amarela."
+        "alimentacao": "Sementes e pequenos insetos",
+        "curiosidade": "Possui canto forte e melodioso."
     },
 
     {
-        "id": "4",
+        "id": 4,
         "nome_popular": "Arara-azul",
         "nome_cientifico": "Anodorhynchus hyacinthinus",
+        "ordem": "Psittaciformes",
+        "familia": "Psittacidae",
+        "dieta_tipo": "Granívora",
         "habitat": "Pantanal, cerrado e áreas de mata",
         "alimentacao": "Frutos, sementes e castanhas",
         "curiosidade": "É uma das maiores espécies de arara do mundo."
     },
 
     {
-        "id": "5",
+        "id": 5,
         "nome_popular": "Tucano-toco",
         "nome_cientifico": "Ramphastos toco",
+        "ordem": "Piciformes",
+        "familia": "Ramphastidae",
+        "dieta_tipo": "Onívora",
         "habitat": "Cerrados, florestas e áreas abertas",
         "alimentacao": "Frutas, insetos e pequenos animais",
         "curiosidade": "Possui um grande bico que ajuda na alimentação."
