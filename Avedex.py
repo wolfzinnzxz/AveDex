@@ -1,3 +1,6 @@
+import unicodedata
+
+
 def exibir_linha():
     print("=" * 50)
 
@@ -32,12 +35,28 @@ def buscar_ave_por_id(catalogo, id_procurado):
     return None
 
 
+def normalizar_texto(texto):
+    texto = str(texto)
+    texto = texto.lower().strip()
+
+    texto = unicodedata.normalize("NFD", texto)
+
+    texto = "".join(
+        caractere
+        for caractere in texto
+        if unicodedata.category(caractere) != "Mn"
+    )
+
+    return texto
+
+
 def buscar_aves_por_nome(catalogo, termo_busca):
     resultados = []
 
+    termo = normalizar_texto(termo_busca)
+
     for ave in catalogo:
-        nome = ave["nome_popular"].lower()
-        termo = termo_busca.lower()
+        nome = normalizar_texto(ave["nome_popular"])
 
         if termo in nome:
             resultados.append(ave)
