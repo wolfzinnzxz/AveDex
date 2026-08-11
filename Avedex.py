@@ -8,11 +8,11 @@ def exibir_linha():
 def exibir_menu():
     print()
     exibir_linha()
-    print("MENU PRINCIPAL")
+    print("AVEDEX - MENU PRINCIPAL")
     exibir_linha()
     print("1 - Listar aves")
-    print("2 - Ver detalhes de uma ave")
-    print("3 - Ver mensagem de boas-vindas")
+    print("2 - Buscar ave")
+    print("3 - Ver detalhes de uma ave")
     print("4 - Sobre a AveDex")
     print("0 - Sair")
 
@@ -88,6 +88,22 @@ def buscar_aves(catalogo, termo_busca):
     return resultados
 
 
+def exibir_resultados_busca(resultados):
+    print()
+    exibir_linha()
+    print("RESULTADOS DA BUSCA")
+    exibir_linha()
+
+    if len(resultados) == 0:
+        print("Nenhuma ave encontrada.")
+    else:
+        for ave in resultados:
+            print(
+                f"{ave['id']} - {ave['nome_popular']} "
+                f"({ave['familia']}, {ave['dieta_tipo']})"
+            )
+
+
 def exibir_detalhes_ave(ave):
     print()
     exibir_linha()
@@ -121,14 +137,39 @@ def selecionar_ave_por_id(catalogo):
         exibir_detalhes_ave(ave_encontrada)
 
 
-def mostrar_boas_vindas(nome_usuario):
-    print(f"Olá, {nome_usuario}!")
-    print("Seja bem-vindo(a) à AveDex.")
+def tela_busca(catalogo):
+    termo = input(
+        "Digite parte do nome, família, ordem ou dieta: "
+    ).strip()
+
+    if termo == "":
+        print("Digite algum texto para realizar a busca.")
+        return
+
+    resultados = buscar_aves(catalogo, termo)
+
+    exibir_resultados_busca(resultados)
+
+    if len(resultados) > 0:
+        escolha = input(
+            "\nDigite o ID para ver detalhes ou ENTER para voltar: "
+        ).strip()
+
+        if escolha != "":
+            ave_encontrada = buscar_ave_por_id(
+                resultados,
+                escolha
+            )
+
+            if ave_encontrada is None:
+                print("ID não encontrado nos resultados.")
+            else:
+                exibir_detalhes_ave(ave_encontrada)
 
 
 def mostrar_sobre():
-    print("Sobre a AveDex:")
     print("A AveDex é um catálogo interativo de aves.")
+    print("Em breve, teremos comparação, imagens, sons e dados em arquivo JSON.")
 
 
 def pausar():
@@ -222,20 +263,19 @@ while opcao_menu != "0":
         listar_aves(catalogo_aves)
 
     elif opcao_menu == "2":
-        selecionar_ave_por_id(catalogo_aves)
+        tela_busca(catalogo_aves)
 
     elif opcao_menu == "3":
-        mostrar_boas_vindas(nome_usuario)
+        selecionar_ave_por_id(catalogo_aves)
 
     elif opcao_menu == "4":
         mostrar_sobre()
 
     elif opcao_menu == "0":
-        print("Encerrando a AveDex.")
-        print(f"Até logo, {nome_usuario}!")
+        print("Encerrando a AveDex. Até logo!")
 
     else:
-        print("Opção inválida.")
+        print("Opção inválida. Digite apenas 0, 1, 2, 3 ou 4.")
 
     if opcao_menu != "0":
         pausar()
