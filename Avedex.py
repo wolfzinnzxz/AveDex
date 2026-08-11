@@ -64,6 +64,30 @@ def buscar_aves_por_nome(catalogo, termo_busca):
     return resultados
 
 
+def buscar_aves(catalogo, termo_busca):
+    resultados = []
+
+    termo = normalizar_texto(termo_busca)
+
+    for ave in catalogo:
+        campos_busca = [
+            ave.get("nome_popular", ""),
+            ave.get("nome_cientifico", ""),
+            ave.get("familia", ""),
+            ave.get("ordem", ""),
+            ave.get("dieta_tipo", "")
+        ]
+
+        texto_busca = " ".join(campos_busca)
+
+        texto_busca = normalizar_texto(texto_busca)
+
+        if termo in texto_busca:
+            resultados.append(ave)
+
+    return resultados
+
+
 def exibir_detalhes_ave(ave):
     print()
     exibir_linha()
