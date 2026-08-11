@@ -50,6 +50,16 @@ def normalizar_texto(texto):
     return texto
 
 
+def valor_ou_indisponivel(valor, unidade=""):
+    if valor is None or valor == "":
+        return "Não informado"
+
+    if unidade != "":
+        return f"{valor} {unidade}"
+
+    return str(valor)
+
+
 def buscar_aves_por_nome(catalogo, termo_busca):
     resultados = []
 
@@ -119,8 +129,14 @@ def exibir_detalhes_ave(ave):
     print(f"Família: {ave['familia']}")
     print(f"Dieta: {ave['dieta_tipo']}")
     print(f"Habitat: {ave['habitat']}")
-    print(f"Comprimento: {ave['comprimento_cm']} cm")
-    print(f"Peso: {ave['peso_g']} g")
+    print(
+        f"Comprimento: "
+        f"{valor_ou_indisponivel(ave.get('comprimento_cm'), 'cm')}"
+    )
+    print(
+        f"Peso: "
+        f"{valor_ou_indisponivel(ave.get('peso_g'), 'g')}"
+    )
     print(f"Status de conservação: {ave['status_conservacao']}")
     print(f"Índice de conservação: {ave['indice_conservacao']}")
     print(f"Alimentação: {ave['alimentacao']}")
@@ -175,7 +191,10 @@ def tela_busca(catalogo):
 
 def mostrar_sobre():
     print("A AveDex é um catálogo interativo de aves.")
-    print("Em breve, teremos comparação, imagens, sons e dados em arquivo JSON.")
+    print(
+        "Em breve, teremos comparação, imagens, "
+        "sons e dados em arquivo JSON."
+    )
 
 
 def pausar():
