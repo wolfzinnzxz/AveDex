@@ -79,7 +79,6 @@ def buscar_aves(catalogo, termo_busca):
         ]
 
         texto_busca = " ".join(campos_busca)
-
         texto_busca = normalizar_texto(texto_busca)
 
         if termo in texto_busca:
@@ -97,6 +96,9 @@ def exibir_resultados_busca(resultados):
     if len(resultados) == 0:
         print("Nenhuma ave encontrada.")
     else:
+        print(f"Quantidade de resultados: {len(resultados)}")
+        print()
+
         for ave in resultados:
             print(
                 f"{ave['id']} - {ave['nome_popular']} "
@@ -237,6 +239,30 @@ catalogo_aves = [
         "habitat": "Cerrados, florestas e áreas abertas",
         "alimentacao": "Frutas, insetos e pequenos animais",
         "curiosidade": "Possui um grande bico que ajuda na alimentação."
+    },
+
+    {
+        "id": 6,
+        "nome_popular": "Sabiá-laranjeira",
+        "nome_cientifico": "Turdus rufiventris",
+        "ordem": "Passeriformes",
+        "familia": "Turdidae",
+        "dieta_tipo": "Onívora",
+        "habitat": "Florestas, jardins, parques e áreas urbanas",
+        "alimentacao": "Frutos, sementes e pequenos animais",
+        "curiosidade": "É conhecido pelo canto melodioso."
+    },
+
+    {
+        "id": 7,
+        "nome_popular": "Beija-flor-tesoura",
+        "nome_cientifico": "Eupetomena macroura",
+        "ordem": "Apodiformes",
+        "familia": "Trochilidae",
+        "dieta_tipo": "Nectarívora",
+        "habitat": "Jardins, áreas abertas, bordas de matas e cidades",
+        "alimentacao": "Néctar e pequenos insetos",
+        "curiosidade": "Possui uma cauda longa e bifurcada."
     }
 ]
 
