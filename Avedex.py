@@ -14,6 +14,7 @@ def exibir_menu():
     print("2 - Buscar ave")
     print("3 - Ver detalhes de uma ave")
     print("4 - Sobre a AveDex")
+    print("5 - Comparar duas aves")
     print("0 - Sair")
 
 
@@ -48,16 +49,6 @@ def normalizar_texto(texto):
     )
 
     return texto
-
-
-def valor_ou_indisponivel(valor, unidade=""):
-    if valor is None or valor == "":
-        return "Não informado"
-
-    if unidade != "":
-        return f"{valor} {unidade}"
-
-    return str(valor)
 
 
 def buscar_aves_por_nome(catalogo, termo_busca):
@@ -116,6 +107,16 @@ def exibir_resultados_busca(resultados):
             )
 
 
+def valor_ou_indisponivel(valor, unidade=""):
+    if valor is None or valor == "":
+        return "Não informado"
+
+    if unidade != "":
+        return f"{valor} {unidade}"
+
+    return str(valor)
+
+
 def exibir_detalhes_ave(ave):
     print()
     exibir_linha()
@@ -129,18 +130,32 @@ def exibir_detalhes_ave(ave):
     print(f"Família: {ave['familia']}")
     print(f"Dieta: {ave['dieta_tipo']}")
     print(f"Habitat: {ave['habitat']}")
+
     print(
         f"Comprimento: "
         f"{valor_ou_indisponivel(ave.get('comprimento_cm'), 'cm')}"
     )
+
     print(
         f"Peso: "
         f"{valor_ou_indisponivel(ave.get('peso_g'), 'g')}"
     )
-    print(f"Status de conservação: {ave['status_conservacao']}")
-    print(f"Índice de conservação: {ave['indice_conservacao']}")
+
+    print(
+        f"Status de conservação: "
+        f"{ave.get('status_conservacao', 'Não informado')}"
+    )
+
+    print(
+        f"Índice de conservação: "
+        f"{ave.get('indice_conservacao', 'Não informado')}"
+    )
+
     print(f"Alimentação: {ave['alimentacao']}")
-    print(f"Curiosidade: {ave.get('curiosidade', 'Não informada')}")
+    print(
+        f"Curiosidade: "
+        f"{ave.get('curiosidade', 'Não informada')}"
+    )
 
 
 def selecionar_ave_por_id(catalogo):
@@ -187,6 +202,152 @@ def tela_busca(catalogo):
                 print("ID não encontrado nos resultados.")
             else:
                 exibir_detalhes_ave(ave_encontrada)
+
+
+def imprimir_linha_comparacao(rotulo, valor_1, valor_2):
+    print(
+        f"{rotulo:<18} | "
+        f"{str(valor_1):<25} | "
+        f"{str(valor_2):<25}"
+    )
+
+
+def exibir_comparacao_aves(ave_1, ave_2):
+    print()
+    print("=" * 78)
+    print("COMPARAÇÃO ENTRE AVES")
+    print("=" * 78)
+
+    imprimir_linha_comparacao(
+        "Campo",
+        ave_1["nome_popular"],
+        ave_2["nome_popular"]
+    )
+
+    print("-" * 78)
+
+    imprimir_linha_comparacao(
+        "Nome científico",
+        ave_1.get("nome_cientifico"),
+        ave_2.get("nome_cientifico")
+    )
+
+    imprimir_linha_comparacao(
+        "Ordem",
+        ave_1.get("ordem"),
+        ave_2.get("ordem")
+    )
+
+    imprimir_linha_comparacao(
+        "Família",
+        ave_1.get("familia"),
+        ave_2.get("familia")
+    )
+
+    imprimir_linha_comparacao(
+        "Dieta",
+        ave_1.get("dieta_tipo"),
+        ave_2.get("dieta_tipo")
+    )
+
+    imprimir_linha_comparacao(
+        "Habitat",
+        ave_1.get("habitat"),
+        ave_2.get("habitat")
+    )
+
+    imprimir_linha_comparacao(
+        "Comprimento",
+        valor_ou_indisponivel(
+            ave_1.get("comprimento_cm"),
+            "cm"
+        ),
+        valor_ou_indisponivel(
+            ave_2.get("comprimento_cm"),
+            "cm"
+        )
+    )
+
+    imprimir_linha_comparacao(
+        "Peso",
+        valor_ou_indisponivel(
+            ave_1.get("peso_g"),
+            "g"
+        ),
+        valor_ou_indisponivel(
+            ave_2.get("peso_g"),
+            "g"
+        )
+    )
+
+    imprimir_linha_comparacao(
+        "Conservação",
+        ave_1.get(
+            "status_conservacao",
+            "Não informado"
+        ),
+        ave_2.get(
+            "status_conservacao",
+            "Não informado"
+        )
+    )
+
+    imprimir_linha_comparacao(
+        "Índice",
+        ave_1.get(
+            "indice_conservacao",
+            "Não informado"
+        ),
+        ave_2.get(
+            "indice_conservacao",
+            "Não informado"
+        )
+    )
+
+
+def escolher_ave(catalogo, mensagem):
+    listar_aves(catalogo)
+
+    id_escolhido = input(
+        f"\n{mensagem}: "
+    ).strip()
+
+    ave_encontrada = buscar_ave_por_id(
+        catalogo,
+        id_escolhido
+    )
+
+    if ave_encontrada is None:
+        print("Ave não encontrada. Confira o ID informado.")
+        return None
+
+    return ave_encontrada
+
+
+def comparar_duas_aves(catalogo):
+    print()
+    print("Escolha a primeira ave")
+
+    ave_1 = escolher_ave(
+        catalogo,
+        "Digite o ID da primeira ave"
+    )
+
+    if ave_1 is None:
+        return
+
+    print()
+    print("Escolha a segunda ave")
+
+    ave_2 = escolher_ave(
+        catalogo,
+        "Digite o ID da segunda ave"
+    )
+
+    if ave_2 is None:
+        return
+
+    exibir_comparacao_aves(ave_1, ave_2)
 
 
 def mostrar_sobre():
@@ -348,11 +509,17 @@ while opcao_menu != "0":
     elif opcao_menu == "4":
         mostrar_sobre()
 
+    elif opcao_menu == "5":
+        comparar_duas_aves(catalogo_aves)
+
     elif opcao_menu == "0":
         print("Encerrando a AveDex. Até logo!")
 
     else:
-        print("Opção inválida. Digite apenas 0, 1, 2, 3 ou 4.")
+        print(
+            "Opção inválida. "
+            "Digite apenas 0, 1, 2, 3, 4 ou 5."
+        )
 
     if opcao_menu != "0":
         pausar()
