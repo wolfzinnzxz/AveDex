@@ -7,14 +7,14 @@ def exibir_linha():
 
 def exibir_menu():
     print()
-    exibir_linha()
+    print("=" * 50)
     print("AVEDEX - MENU PRINCIPAL")
-    exibir_linha()
+    print("=" * 50)
     print("1 - Listar aves")
     print("2 - Buscar ave")
     print("3 - Ver detalhes de uma ave")
-    print("4 - Sobre a AveDex")
-    print("5 - Comparar duas aves")
+    print("4 - Comparar duas aves")
+    print("5 - Sobre a AveDex")
     print("0 - Sair")
 
 
@@ -130,27 +130,22 @@ def exibir_detalhes_ave(ave):
     print(f"Família: {ave['familia']}")
     print(f"Dieta: {ave['dieta_tipo']}")
     print(f"Habitat: {ave['habitat']}")
-
     print(
         f"Comprimento: "
         f"{valor_ou_indisponivel(ave.get('comprimento_cm'), 'cm')}"
     )
-
     print(
         f"Peso: "
         f"{valor_ou_indisponivel(ave.get('peso_g'), 'g')}"
     )
-
     print(
         f"Status de conservação: "
         f"{ave.get('status_conservacao', 'Não informado')}"
     )
-
     print(
         f"Índice de conservação: "
         f"{ave.get('indice_conservacao', 'Não informado')}"
     )
-
     print(f"Alimentação: {ave['alimentacao']}")
     print(
         f"Curiosidade: "
@@ -353,8 +348,8 @@ def comparar_duas_aves(catalogo):
 def mostrar_sobre():
     print("A AveDex é um catálogo interativo de aves.")
     print(
-        "Em breve, teremos comparação, imagens, "
-        "sons e dados em arquivo JSON."
+        "Em breve, teremos batalha, imagens, sons "
+        "e dados em arquivo JSON."
     )
 
 
@@ -507,10 +502,10 @@ while opcao_menu != "0":
         selecionar_ave_por_id(catalogo_aves)
 
     elif opcao_menu == "4":
-        mostrar_sobre()
+        comparar_duas_aves(catalogo_aves)
 
     elif opcao_menu == "5":
-        comparar_duas_aves(catalogo_aves)
+        mostrar_sobre()
 
     elif opcao_menu == "0":
         print("Encerrando a AveDex. Até logo!")
