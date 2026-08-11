@@ -119,6 +119,10 @@ def exibir_detalhes_ave(ave):
     print(f"Família: {ave['familia']}")
     print(f"Dieta: {ave['dieta_tipo']}")
     print(f"Habitat: {ave['habitat']}")
+    print(f"Comprimento: {ave['comprimento_cm']} cm")
+    print(f"Peso: {ave['peso_g']} g")
+    print(f"Status de conservação: {ave['status_conservacao']}")
+    print(f"Índice de conservação: {ave['indice_conservacao']}")
     print(f"Alimentação: {ave['alimentacao']}")
     print(f"Curiosidade: {ave.get('curiosidade', 'Não informada')}")
 
@@ -189,6 +193,10 @@ catalogo_aves = [
         "familia": "Tyrannidae",
         "dieta_tipo": "Onívora",
         "habitat": "Áreas abertas, cidades e bordas de florestas",
+        "comprimento_cm": 23,
+        "peso_g": 68,
+        "status_conservacao": "Pouco preocupante",
+        "indice_conservacao": 1,
         "alimentacao": "Insetos, frutos e pequenos animais",
         "curiosidade": "Seu canto parece dizer o próprio nome."
     },
@@ -201,6 +209,10 @@ catalogo_aves = [
         "familia": "Furnariidae",
         "dieta_tipo": "Insetívora",
         "habitat": "Campos, cidades e áreas rurais",
+        "comprimento_cm": 20,
+        "peso_g": 49,
+        "status_conservacao": "Pouco preocupante",
+        "indice_conservacao": 1,
         "alimentacao": "Insetos e outros invertebrados",
         "curiosidade": "É conhecido por construir ninhos de barro."
     },
@@ -213,6 +225,10 @@ catalogo_aves = [
         "familia": "Thraupidae",
         "dieta_tipo": "Granívora",
         "habitat": "Campos e áreas abertas",
+        "comprimento_cm": 13,
+        "peso_g": 20,
+        "status_conservacao": "Pouco preocupante",
+        "indice_conservacao": 1,
         "alimentacao": "Sementes e pequenos insetos",
         "curiosidade": "Possui canto forte e melodioso."
     },
@@ -225,6 +241,10 @@ catalogo_aves = [
         "familia": "Psittacidae",
         "dieta_tipo": "Granívora",
         "habitat": "Pantanal, cerrado e áreas de mata",
+        "comprimento_cm": 100,
+        "peso_g": 1500,
+        "status_conservacao": "Vulnerável",
+        "indice_conservacao": 3,
         "alimentacao": "Frutos, sementes e castanhas",
         "curiosidade": "É uma das maiores espécies de arara do mundo."
     },
@@ -237,6 +257,10 @@ catalogo_aves = [
         "familia": "Ramphastidae",
         "dieta_tipo": "Onívora",
         "habitat": "Cerrados, florestas e áreas abertas",
+        "comprimento_cm": 56,
+        "peso_g": 540,
+        "status_conservacao": "Pouco preocupante",
+        "indice_conservacao": 1,
         "alimentacao": "Frutas, insetos e pequenos animais",
         "curiosidade": "Possui um grande bico que ajuda na alimentação."
     },
@@ -249,6 +273,10 @@ catalogo_aves = [
         "familia": "Turdidae",
         "dieta_tipo": "Onívora",
         "habitat": "Florestas, jardins, parques e áreas urbanas",
+        "comprimento_cm": 25,
+        "peso_g": 75,
+        "status_conservacao": "Pouco preocupante",
+        "indice_conservacao": 1,
         "alimentacao": "Frutos, sementes e pequenos animais",
         "curiosidade": "É conhecido pelo canto melodioso."
     },
@@ -261,6 +289,10 @@ catalogo_aves = [
         "familia": "Trochilidae",
         "dieta_tipo": "Nectarívora",
         "habitat": "Jardins, áreas abertas, bordas de matas e cidades",
+        "comprimento_cm": 17,
+        "peso_g": 9,
+        "status_conservacao": "Pouco preocupante",
+        "indice_conservacao": 1,
         "alimentacao": "Néctar e pequenos insetos",
         "curiosidade": "Possui uma cauda longa e bifurcada."
     }
