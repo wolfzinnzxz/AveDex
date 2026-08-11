@@ -130,23 +130,29 @@ def exibir_detalhes_ave(ave):
     print(f"Família: {ave['familia']}")
     print(f"Dieta: {ave['dieta_tipo']}")
     print(f"Habitat: {ave['habitat']}")
+
     print(
         f"Comprimento: "
         f"{valor_ou_indisponivel(ave.get('comprimento_cm'), 'cm')}"
     )
+
     print(
         f"Peso: "
         f"{valor_ou_indisponivel(ave.get('peso_g'), 'g')}"
     )
+
     print(
         f"Status de conservação: "
         f"{ave.get('status_conservacao', 'Não informado')}"
     )
+
     print(
         f"Índice de conservação: "
         f"{ave.get('indice_conservacao', 'Não informado')}"
     )
+
     print(f"Alimentação: {ave['alimentacao']}")
+
     print(
         f"Curiosidade: "
         f"{ave.get('curiosidade', 'Não informada')}"
