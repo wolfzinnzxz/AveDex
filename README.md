@@ -1,10 +1,9 @@
 ## Testes manuais realizados
 
-- [x] Busca por parte do nome popular
-- [x] Busca ignorando acentos
-- [x] Busca por família
-- [x] Busca por ordem
-- [x] Busca por dieta
-- [x] Busca sem resultados
-- [x] Busca com entrada vazia
-- [x] Tentativa de abrir ID fora dos resultados
+* [x] Comparação entre duas aves existentes
+* [x] Comparação exibindo família, dieta e habitat
+* [x] Comparação exibindo peso e comprimento
+* [x] Comparação exibindo status e índice de conservação
+* [x] Tratamento de ID inexistente na comparação
+* [x] Comparação da mesma ave com ela mesma
+* [x] Opção inválida no menu
