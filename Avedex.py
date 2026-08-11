@@ -7,9 +7,9 @@ def exibir_linha():
 
 def exibir_menu():
     print()
-    print("=" * 50)
+    exibir_linha()
     print("AVEDEX - MENU PRINCIPAL")
-    print("=" * 50)
+    exibir_linha()
     print("1 - Listar aves")
     print("2 - Buscar ave")
     print("3 - Ver detalhes de uma ave")
@@ -152,7 +152,6 @@ def exibir_detalhes_ave(ave):
     )
 
     print(f"Alimentação: {ave['alimentacao']}")
-
     print(
         f"Curiosidade: "
         f"{ave.get('curiosidade', 'Não informada')}"
@@ -162,7 +161,9 @@ def exibir_detalhes_ave(ave):
 def selecionar_ave_por_id(catalogo):
     listar_aves(catalogo)
 
-    id_escolhido = input("\nDigite o ID da ave: ").strip()
+    id_escolhido = input(
+        "\nDigite o ID da ave: "
+    ).strip()
 
     ave_encontrada = buscar_ave_por_id(
         catalogo,
@@ -305,6 +306,30 @@ def exibir_comparacao_aves(ave_1, ave_2):
         )
     )
 
+    # Melhoria escolhida:
+    # informar qual ave é mais pesada.
+
+    print()
+
+    peso_1 = ave_1.get("peso_g")
+    peso_2 = ave_2.get("peso_g")
+
+    if peso_1 is not None and peso_2 is not None:
+        if peso_1 > peso_2:
+            print(
+                f"A ave mais pesada é a "
+                f"{ave_1['nome_popular']} ({peso_1} g)."
+            )
+
+        elif peso_2 > peso_1:
+            print(
+                f"A ave mais pesada é a "
+                f"{ave_2['nome_popular']} ({peso_2} g)."
+            )
+
+        else:
+            print("As duas aves possuem o mesmo peso.")
+
 
 def escolher_ave(catalogo, mensagem):
     listar_aves(catalogo)
@@ -348,7 +373,10 @@ def comparar_duas_aves(catalogo):
     if ave_2 is None:
         return
 
-    exibir_comparacao_aves(ave_1, ave_2)
+    exibir_comparacao_aves(
+        ave_1,
+        ave_2
+    )
 
 
 def mostrar_sobre():
@@ -360,10 +388,14 @@ def mostrar_sobre():
 
 
 def pausar():
-    input("\nPressione ENTER para voltar ao menu...")
+    input(
+        "\nPressione ENTER para voltar ao menu..."
+    )
 
 
-# Catálogo de aves
+# ============================================================
+# CATÁLOGO DE AVES
+# ============================================================
 
 catalogo_aves = [
     {
@@ -476,17 +508,53 @@ catalogo_aves = [
         "indice_conservacao": 1,
         "alimentacao": "Néctar e pequenos insetos",
         "curiosidade": "Possui uma cauda longa e bifurcada."
+    },
+
+    {
+        "id": 8,
+        "nome_popular": "Coruja-buraqueira",
+        "nome_cientifico": "Athene cunicularia",
+        "ordem": "Strigiformes",
+        "familia": "Strigidae",
+        "dieta_tipo": "Carnívora",
+        "habitat": "Campos, pastagens, áreas abertas e regiões urbanas",
+        "comprimento_cm": 23,
+        "peso_g": 170,
+        "status_conservacao": "Pouco preocupante",
+        "indice_conservacao": 1,
+        "alimentacao": "Insetos, pequenos mamíferos e outros animais",
+        "curiosidade": "Costuma utilizar buracos no solo como abrigo."
+    },
+
+    {
+        "id": 9,
+        "nome_popular": "Garça-branca-grande",
+        "nome_cientifico": "Ardea alba",
+        "ordem": "Pelecaniformes",
+        "familia": "Ardeidae",
+        "dieta_tipo": "Carnívora",
+        "habitat": "Lagos, rios, áreas alagadas e regiões costeiras",
+        "comprimento_cm": 100,
+        "peso_g": 1000,
+        "status_conservacao": "Pouco preocupante",
+        "indice_conservacao": 1,
+        "alimentacao": "Peixes, anfíbios, insetos e pequenos animais",
+        "curiosidade": "Pode permanecer imóvel por bastante tempo enquanto procura alimento."
     }
 ]
 
 
-# Programa principal
+# ============================================================
+# PROGRAMA PRINCIPAL
+# ============================================================
 
 exibir_linha()
 print("AVEDEX")
 exibir_linha()
 
-nome_usuario = input("Digite seu nome: ").strip()
+nome_usuario = input(
+    "Digite seu nome: "
+).strip()
 
 opcao_menu = ""
 
@@ -494,7 +562,9 @@ while opcao_menu != "0":
 
     exibir_menu()
 
-    opcao_menu = input("Escolha uma opção: ").strip()
+    opcao_menu = input(
+        "Escolha uma opção: "
+    ).strip()
 
     print()
 
