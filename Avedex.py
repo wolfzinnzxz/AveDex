@@ -1,6 +1,9 @@
 import unicodedata
 
-# Constantes
+
+# ============================================================
+# CONSTANTES
+# ============================================================
 
 LARGURA_TELA = 78
 
@@ -34,7 +37,9 @@ CAMPOS_COMPARACAO = [
 ]
 
 
-# Funções auxiliares de exibição
+# ============================================================
+# FUNÇÕES AUXILIARES DE EXIBIÇÃO
+# ============================================================
 
 def linha(caractere="=", largura=LARGURA_TELA):
     # Retorna uma linha formada pela repetição de um caractere.
@@ -54,7 +59,9 @@ def mensagem_aviso(texto):
     print(f"[AVISO] {texto}")
 
 
-# Menu principal
+# ============================================================
+# MENU PRINCIPAL
+# ============================================================
 
 def exibir_menu():
     # Exibe o título do menu.
@@ -65,7 +72,9 @@ def exibir_menu():
         print(opcao)
 
 
-# Funções de busca
+# ============================================================
+# FUNÇÕES DE BUSCA
+# ============================================================
 
 def normalizar_texto(texto):
     texto = str(texto)
@@ -99,20 +108,6 @@ def criar_texto_busca(ave):
     return normalizar_texto(texto)
 
 
-def buscar_aves_por_nome(catalogo, termo_busca):
-    resultados = []
-
-    termo = normalizar_texto(termo_busca)
-
-    for ave in catalogo:
-        nome = normalizar_texto(ave["nome_popular"])
-
-        if termo in nome:
-            resultados.append(ave)
-
-    return resultados
-
-
 def buscar_aves(catalogo, termo_busca):
     # Lista que receberá as aves encontradas.
     resultados = []
@@ -140,23 +135,9 @@ def buscar_ave_por_id(catalogo, id_procurado):
     return None
 
 
-def exibir_resultados_busca(resultados):
-    titulo("RESULTADOS DA BUSCA")
-
-    if len(resultados) == 0:
-        mensagem_aviso("Nenhuma ave encontrada.")
-    else:
-        print(f"Quantidade de resultados: {len(resultados)}")
-        print()
-
-        for ave in resultados:
-            print(
-                f"{ave['id']} - {ave['nome_popular']} "
-                f"({ave['familia']}, {ave['dieta_tipo']})"
-            )
-
-
-# Funções de formatação
+# ============================================================
+# FUNÇÕES DE FORMATAÇÃO
+# ============================================================
 
 def valor_ou_indisponivel(valor, unidade=""):
     if valor is None or valor == "":
@@ -196,7 +177,20 @@ def preparar_valor_comparacao(ave, campo, unidade):
     return valor_ou_indisponivel(valor, unidade)
 
 
-# Exibição de detalhes
+# ============================================================
+# LISTAGEM DE AVES
+# ============================================================
+
+def listar_aves(catalogo):
+    titulo("AVES CADASTRADAS")
+
+    for ave in catalogo:
+        print(f"{ave['id']} - {ave['nome_popular']}")
+
+
+# ============================================================
+# EXIBIÇÃO DE DETALHES
+# ============================================================
 
 def exibir_detalhes_ave(ave):
     titulo("DETALHES DA AVE")
@@ -255,7 +249,25 @@ def selecionar_ave_por_id(catalogo):
         exibir_detalhes_ave(ave_encontrada)
 
 
-# Busca na tela
+# ============================================================
+# TELA DE BUSCA
+# ============================================================
+
+def exibir_resultados_busca(resultados):
+    titulo("RESULTADOS DA BUSCA")
+
+    if len(resultados) == 0:
+        mensagem_aviso("Nenhuma ave encontrada.")
+    else:
+        print(f"Quantidade de resultados: {len(resultados)}")
+        print()
+
+        for ave in resultados:
+            print(
+                f"{ave['id']} - {ave['nome_popular']} "
+                f"({ave['familia']}, {ave['dieta_tipo']})"
+            )
+
 
 def tela_busca(catalogo):
     termo = input(
@@ -287,16 +299,9 @@ def tela_busca(catalogo):
                 exibir_detalhes_ave(ave_encontrada)
 
 
-# Listagem
-
-def listar_aves(catalogo):
-    titulo("AVES CADASTRADAS")
-
-    for ave in catalogo:
-        print(f"{ave['id']} - {ave['nome_popular']}")
-
-
-# Comparação
+# ============================================================
+# COMPARAÇÃO
+# ============================================================
 
 def imprimir_linha_comparacao(rotulo, valor_1, valor_2):
     print(
@@ -321,15 +326,14 @@ def exibir_comparacao_aves(ave_1, ave_2):
 
     # Percorre todos os campos configurados em CAMPOS_COMPARACAO.
     for rotulo, campo, unidade in CAMPOS_COMPARACAO:
-
-        # Prepara o valor da primeira ave.
+        # Obtém e prepara o valor da primeira ave.
         valor_1 = preparar_valor_comparacao(
             ave_1,
             campo,
             unidade
         )
 
-        # Prepara o valor da segunda ave.
+        # Obtém e prepara o valor da segunda ave.
         valor_2 = preparar_valor_comparacao(
             ave_2,
             campo,
@@ -389,6 +393,10 @@ def comparar_duas_aves(catalogo):
     exibir_comparacao_aves(ave_1, ave_2)
 
 
+# ============================================================
+# OUTRAS FUNÇÕES
+# ============================================================
+
 def mostrar_sobre():
     print("A AveDex é um catálogo interativo de aves.")
     print(
@@ -401,7 +409,9 @@ def pausar():
     input("\nPressione ENTER para voltar ao menu...")
 
 
-# Catálogo de aves
+# ============================================================
+# CATÁLOGO DE AVES
+# ============================================================
 
 catalogo_aves = [
     {
@@ -419,7 +429,6 @@ catalogo_aves = [
         "alimentacao": "Insetos, frutos e pequenos animais",
         "curiosidade": "Seu canto parece dizer o próprio nome."
     },
-
     {
         "id": 2,
         "nome_popular": "João-de-barro",
@@ -435,7 +444,6 @@ catalogo_aves = [
         "alimentacao": "Insetos e outros invertebrados",
         "curiosidade": "É conhecido por construir ninhos de barro."
     },
-
     {
         "id": 3,
         "nome_popular": "Canário-da-terra",
@@ -451,7 +459,6 @@ catalogo_aves = [
         "alimentacao": "Sementes e pequenos insetos",
         "curiosidade": "Possui canto forte e melodioso."
     },
-
     {
         "id": 4,
         "nome_popular": "Arara-azul",
@@ -467,7 +474,6 @@ catalogo_aves = [
         "alimentacao": "Frutos, sementes e castanhas",
         "curiosidade": "É uma das maiores espécies de arara do mundo."
     },
-
     {
         "id": 5,
         "nome_popular": "Tucano-toco",
@@ -483,7 +489,6 @@ catalogo_aves = [
         "alimentacao": "Frutas, insetos e pequenos animais",
         "curiosidade": "Possui um grande bico que ajuda na alimentação."
     },
-
     {
         "id": 6,
         "nome_popular": "Sabiá-laranjeira",
@@ -499,7 +504,6 @@ catalogo_aves = [
         "alimentacao": "Frutos, sementes e pequenos animais",
         "curiosidade": "É conhecido pelo canto melodioso."
     },
-
     {
         "id": 7,
         "nome_popular": "Beija-flor-tesoura",
@@ -518,7 +522,9 @@ catalogo_aves = [
 ]
 
 
-# Programa principal
+# ============================================================
+# PROGRAMA PRINCIPAL
+# ============================================================
 
 titulo("AVEDEX")
 
