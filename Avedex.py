@@ -156,6 +156,8 @@ def exibir_resultados_busca(resultados):
             )
 
 
+# Funções de formatação
+
 def valor_ou_indisponivel(valor, unidade=""):
     if valor is None or valor == "":
         return "Não informado"
@@ -165,6 +167,36 @@ def valor_ou_indisponivel(valor, unidade=""):
 
     return str(valor)
 
+
+def cortar_texto(texto, tamanho=25):
+    # Se o texto não existir, retornamos uma mensagem padrão.
+    if texto is None:
+        return "Não informado"
+
+    # Garantimos que o valor será tratado como texto.
+    texto = str(texto).strip()
+
+    # Se o texto já couber no tamanho definido, retornamos sem alteração.
+    if len(texto) <= tamanho:
+        return texto
+
+    # Se for longo demais, cortamos e adicionamos reticências.
+    return texto[: tamanho - 3] + "..."
+
+
+def preparar_valor_comparacao(ave, campo, unidade):
+    # Busca o valor original da ave.
+    valor = ave.get(campo)
+
+    # Habitat costuma ser longo, então cortamos para não quebrar a tabela.
+    if campo == "habitat":
+        return cortar_texto(valor, 25)
+
+    # Os demais campos usam a função padrão.
+    return valor_ou_indisponivel(valor, unidade)
+
+
+# Exibição de detalhes
 
 def exibir_detalhes_ave(ave):
     titulo("DETALHES DA AVE")
@@ -223,6 +255,8 @@ def selecionar_ave_por_id(catalogo):
         exibir_detalhes_ave(ave_encontrada)
 
 
+# Busca na tela
+
 def tela_busca(catalogo):
     termo = input(
         "Digite parte do nome, família, ordem ou dieta: "
@@ -253,12 +287,16 @@ def tela_busca(catalogo):
                 exibir_detalhes_ave(ave_encontrada)
 
 
+# Listagem
+
 def listar_aves(catalogo):
     titulo("AVES CADASTRADAS")
 
     for ave in catalogo:
         print(f"{ave['id']} - {ave['nome_popular']}")
 
+
+# Comparação
 
 def imprimir_linha_comparacao(rotulo, valor_1, valor_2):
     print(
@@ -267,8 +305,6 @@ def imprimir_linha_comparacao(rotulo, valor_1, valor_2):
         f"{str(valor_2):<25}"
     )
 
-
-# Comparação entre aves
 
 def exibir_comparacao_aves(ave_1, ave_2):
     # Cabeçalho da comparação.
@@ -286,15 +322,17 @@ def exibir_comparacao_aves(ave_1, ave_2):
     # Percorre todos os campos configurados em CAMPOS_COMPARACAO.
     for rotulo, campo, unidade in CAMPOS_COMPARACAO:
 
-        # Obtém e formata o valor da primeira ave.
-        valor_1 = valor_ou_indisponivel(
-            ave_1.get(campo),
+        # Prepara o valor da primeira ave.
+        valor_1 = preparar_valor_comparacao(
+            ave_1,
+            campo,
             unidade
         )
 
-        # Obtém e formata o valor da segunda ave.
-        valor_2 = valor_ou_indisponivel(
-            ave_2.get(campo),
+        # Prepara o valor da segunda ave.
+        valor_2 = preparar_valor_comparacao(
+            ave_2,
+            campo,
             unidade
         )
 
