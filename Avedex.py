@@ -1,8 +1,41 @@
 import unicodedata
 
+# Constantes
+
+LARGURA_TELA = 78
+
+OPCOES_MENU = [
+    "1 - Listar aves",
+    "2 - Buscar ave",
+    "3 - Ver detalhes de uma ave",
+    "4 - Comparar duas aves",
+    "5 - Sobre a AveDex",
+    "0 - Sair"
+]
+
+CAMPOS_BUSCA = [
+    "nome_popular",
+    "nome_cientifico",
+    "familia",
+    "ordem",
+    "dieta_tipo"
+]
+
+CAMPOS_COMPARACAO = [
+    ("Nome científico", "nome_cientifico", ""),
+    ("Ordem", "ordem", ""),
+    ("Família", "familia", ""),
+    ("Dieta", "dieta_tipo", ""),
+    ("Habitat", "habitat", ""),
+    ("Comprimento", "comprimento_cm", "cm"),
+    ("Peso", "peso_g", "g"),
+    ("Conservação", "status_conservacao", ""),
+    ("Índice", "indice_conservacao", "")
+]
+
 
 def exibir_linha():
-    print("=" * 50)
+    print("=" * LARGURA_TELA)
 
 
 def exibir_menu():
@@ -10,12 +43,9 @@ def exibir_menu():
     exibir_linha()
     print("AVEDEX - MENU PRINCIPAL")
     exibir_linha()
-    print("1 - Listar aves")
-    print("2 - Buscar ave")
-    print("3 - Ver detalhes de uma ave")
-    print("4 - Comparar duas aves")
-    print("5 - Sobre a AveDex")
-    print("0 - Sair")
+
+    for opcao in OPCOES_MENU:
+        print(opcao)
 
 
 def listar_aves(catalogo):
@@ -72,11 +102,8 @@ def buscar_aves(catalogo, termo_busca):
 
     for ave in catalogo:
         campos_busca = [
-            ave.get("nome_popular", ""),
-            ave.get("nome_cientifico", ""),
-            ave.get("familia", ""),
-            ave.get("ordem", ""),
-            ave.get("dieta_tipo", "")
+            ave.get(campo, "")
+            for campo in CAMPOS_BUSCA
         ]
 
         texto_busca = " ".join(campos_busca)
@@ -130,27 +157,22 @@ def exibir_detalhes_ave(ave):
     print(f"Família: {ave['familia']}")
     print(f"Dieta: {ave['dieta_tipo']}")
     print(f"Habitat: {ave['habitat']}")
-
     print(
         f"Comprimento: "
         f"{valor_ou_indisponivel(ave.get('comprimento_cm'), 'cm')}"
     )
-
     print(
         f"Peso: "
         f"{valor_ou_indisponivel(ave.get('peso_g'), 'g')}"
     )
-
     print(
         f"Status de conservação: "
         f"{ave.get('status_conservacao', 'Não informado')}"
     )
-
     print(
         f"Índice de conservação: "
         f"{ave.get('indice_conservacao', 'Não informado')}"
     )
-
     print(f"Alimentação: {ave['alimentacao']}")
     print(
         f"Curiosidade: "
@@ -216,9 +238,9 @@ def imprimir_linha_comparacao(rotulo, valor_1, valor_2):
 
 def exibir_comparacao_aves(ave_1, ave_2):
     print()
-    print("=" * 78)
+    print("=" * LARGURA_TELA)
     print("COMPARAÇÃO ENTRE AVES")
-    print("=" * 78)
+    print("=" * LARGURA_TELA)
 
     imprimir_linha_comparacao(
         "Campo",
@@ -226,109 +248,24 @@ def exibir_comparacao_aves(ave_1, ave_2):
         ave_2["nome_popular"]
     )
 
-    print("-" * 78)
+    print("-" * LARGURA_TELA)
 
-    imprimir_linha_comparacao(
-        "Nome científico",
-        ave_1.get("nome_cientifico"),
-        ave_2.get("nome_cientifico")
-    )
+    for rotulo, campo, unidade in CAMPOS_COMPARACAO:
+        valor_1 = ave_1.get(campo)
+        valor_2 = ave_2.get(campo)
 
-    imprimir_linha_comparacao(
-        "Ordem",
-        ave_1.get("ordem"),
-        ave_2.get("ordem")
-    )
-
-    imprimir_linha_comparacao(
-        "Família",
-        ave_1.get("familia"),
-        ave_2.get("familia")
-    )
-
-    imprimir_linha_comparacao(
-        "Dieta",
-        ave_1.get("dieta_tipo"),
-        ave_2.get("dieta_tipo")
-    )
-
-    imprimir_linha_comparacao(
-        "Habitat",
-        ave_1.get("habitat"),
-        ave_2.get("habitat")
-    )
-
-    imprimir_linha_comparacao(
-        "Comprimento",
-        valor_ou_indisponivel(
-            ave_1.get("comprimento_cm"),
-            "cm"
-        ),
-        valor_ou_indisponivel(
-            ave_2.get("comprimento_cm"),
-            "cm"
-        )
-    )
-
-    imprimir_linha_comparacao(
-        "Peso",
-        valor_ou_indisponivel(
-            ave_1.get("peso_g"),
-            "g"
-        ),
-        valor_ou_indisponivel(
-            ave_2.get("peso_g"),
-            "g"
-        )
-    )
-
-    imprimir_linha_comparacao(
-        "Conservação",
-        ave_1.get(
-            "status_conservacao",
-            "Não informado"
-        ),
-        ave_2.get(
-            "status_conservacao",
-            "Não informado"
-        )
-    )
-
-    imprimir_linha_comparacao(
-        "Índice",
-        ave_1.get(
-            "indice_conservacao",
-            "Não informado"
-        ),
-        ave_2.get(
-            "indice_conservacao",
-            "Não informado"
-        )
-    )
-
-    # Melhoria escolhida:
-    # informar qual ave é mais pesada.
-
-    print()
-
-    peso_1 = ave_1.get("peso_g")
-    peso_2 = ave_2.get("peso_g")
-
-    if peso_1 is not None and peso_2 is not None:
-        if peso_1 > peso_2:
-            print(
-                f"A ave mais pesada é a "
-                f"{ave_1['nome_popular']} ({peso_1} g)."
-            )
-
-        elif peso_2 > peso_1:
-            print(
-                f"A ave mais pesada é a "
-                f"{ave_2['nome_popular']} ({peso_2} g)."
-            )
-
+        if unidade != "":
+            valor_1 = valor_ou_indisponivel(valor_1, unidade)
+            valor_2 = valor_ou_indisponivel(valor_2, unidade)
         else:
-            print("As duas aves possuem o mesmo peso.")
+            valor_1 = valor_ou_indisponivel(valor_1)
+            valor_2 = valor_ou_indisponivel(valor_2)
+
+        imprimir_linha_comparacao(
+            rotulo,
+            valor_1,
+            valor_2
+        )
 
 
 def escolher_ave(catalogo, mensagem):
@@ -373,10 +310,7 @@ def comparar_duas_aves(catalogo):
     if ave_2 is None:
         return
 
-    exibir_comparacao_aves(
-        ave_1,
-        ave_2
-    )
+    exibir_comparacao_aves(ave_1, ave_2)
 
 
 def mostrar_sobre():
@@ -388,14 +322,10 @@ def mostrar_sobre():
 
 
 def pausar():
-    input(
-        "\nPressione ENTER para voltar ao menu..."
-    )
+    input("\nPressione ENTER para voltar ao menu...")
 
 
-# ============================================================
-# CATÁLOGO DE AVES
-# ============================================================
+# Catálogo de aves
 
 catalogo_aves = [
     {
@@ -508,58 +438,21 @@ catalogo_aves = [
         "indice_conservacao": 1,
         "alimentacao": "Néctar e pequenos insetos",
         "curiosidade": "Possui uma cauda longa e bifurcada."
-    },
-
-    {
-        "id": 8,
-        "nome_popular": "Coruja-buraqueira",
-        "nome_cientifico": "Athene cunicularia",
-        "ordem": "Strigiformes",
-        "familia": "Strigidae",
-        "dieta_tipo": "Carnívora",
-        "habitat": "Campos, pastagens, áreas abertas e regiões urbanas",
-        "comprimento_cm": 23,
-        "peso_g": 170,
-        "status_conservacao": "Pouco preocupante",
-        "indice_conservacao": 1,
-        "alimentacao": "Insetos, pequenos mamíferos e outros animais",
-        "curiosidade": "Costuma utilizar buracos no solo como abrigo."
-    },
-
-    {
-        "id": 9,
-        "nome_popular": "Garça-branca-grande",
-        "nome_cientifico": "Ardea alba",
-        "ordem": "Pelecaniformes",
-        "familia": "Ardeidae",
-        "dieta_tipo": "Carnívora",
-        "habitat": "Lagos, rios, áreas alagadas e regiões costeiras",
-        "comprimento_cm": 100,
-        "peso_g": 1000,
-        "status_conservacao": "Pouco preocupante",
-        "indice_conservacao": 1,
-        "alimentacao": "Peixes, anfíbios, insetos e pequenos animais",
-        "curiosidade": "Pode permanecer imóvel por bastante tempo enquanto procura alimento."
     }
 ]
 
 
-# ============================================================
-# PROGRAMA PRINCIPAL
-# ============================================================
+# Programa principal
 
 exibir_linha()
 print("AVEDEX")
 exibir_linha()
 
-nome_usuario = input(
-    "Digite seu nome: "
-).strip()
+nome_usuario = input("Digite seu nome: ").strip()
 
 opcao_menu = ""
 
 while opcao_menu != "0":
-
     exibir_menu()
 
     opcao_menu = input(
@@ -589,7 +482,7 @@ while opcao_menu != "0":
     else:
         print(
             "Opção inválida. "
-            "Digite apenas 0, 1, 2, 3, 4 ou 5."
+            "Digite apenas 0, 1, 2, 3, 4, 5 ou 0."
         )
 
     if opcao_menu != "0":
