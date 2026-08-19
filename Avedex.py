@@ -567,3 +567,4 @@ while opcao_menu != "0":
 
     if opcao_menu != "0":
         pausar()
+        
