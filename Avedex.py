@@ -268,9 +268,13 @@ def imprimir_linha_comparacao(rotulo, valor_1, valor_2):
     )
 
 
+# Comparação entre aves
+
 def exibir_comparacao_aves(ave_1, ave_2):
+    # Cabeçalho da comparação.
     titulo("COMPARAÇÃO ENTRE AVES")
 
+    # Primeira linha com o nome das aves.
     imprimir_linha_comparacao(
         "Campo",
         ave_1["nome_popular"],
@@ -279,17 +283,22 @@ def exibir_comparacao_aves(ave_1, ave_2):
 
     print(linha("-"))
 
+    # Percorre todos os campos configurados em CAMPOS_COMPARACAO.
     for rotulo, campo, unidade in CAMPOS_COMPARACAO:
-        valor_1 = ave_1.get(campo)
-        valor_2 = ave_2.get(campo)
 
-        if unidade != "":
-            valor_1 = valor_ou_indisponivel(valor_1, unidade)
-            valor_2 = valor_ou_indisponivel(valor_2, unidade)
-        else:
-            valor_1 = valor_ou_indisponivel(valor_1)
-            valor_2 = valor_ou_indisponivel(valor_2)
+        # Obtém e formata o valor da primeira ave.
+        valor_1 = valor_ou_indisponivel(
+            ave_1.get(campo),
+            unidade
+        )
 
+        # Obtém e formata o valor da segunda ave.
+        valor_2 = valor_ou_indisponivel(
+            ave_2.get(campo),
+            unidade
+        )
+
+        # Imprime a linha já formatada.
         imprimir_linha_comparacao(
             rotulo,
             valor_1,
