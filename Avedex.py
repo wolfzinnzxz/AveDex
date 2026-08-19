@@ -59,6 +59,11 @@ def mensagem_aviso(texto):
     print(f"[AVISO] {texto}")
 
 
+def mensagem_sucesso(texto):
+    # Exibe uma mensagem de sucesso padronizada.
+    print(f"[SUCESSO] {texto}")
+
+
 # ============================================================
 # MENU PRINCIPAL
 # ============================================================
@@ -232,20 +237,9 @@ def exibir_detalhes_ave(ave):
 
 
 def selecionar_ave_por_id(catalogo):
-    listar_aves(catalogo)
+    ave_encontrada = escolher_ave(catalogo, "Digite o ID da ave")
 
-    id_escolhido = input(
-        "\nDigite o ID da ave: "
-    ).strip()
-
-    ave_encontrada = buscar_ave_por_id(
-        catalogo,
-        id_escolhido
-    )
-
-    if ave_encontrada is None:
-        mensagem_aviso("Ave não encontrada. Confira o ID informado.")
-    else:
+    if ave_encontrada is not None:
         exibir_detalhes_ave(ave_encontrada)
 
 
@@ -567,4 +561,3 @@ while opcao_menu != "0":
 
     if opcao_menu != "0":
         pausar()
-        
