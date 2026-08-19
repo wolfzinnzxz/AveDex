@@ -65,20 +65,7 @@ def exibir_menu():
         print(opcao)
 
 
-def listar_aves(catalogo):
-    titulo("AVES CADASTRADAS")
-
-    for ave in catalogo:
-        print(f"{ave['id']} - {ave['nome_popular']}")
-
-
-def buscar_ave_por_id(catalogo, id_procurado):
-    for ave in catalogo:
-        if str(ave["id"]) == id_procurado:
-            return ave
-
-    return None
-
+# Funções de busca
 
 def normalizar_texto(texto):
     texto = str(texto)
@@ -93,6 +80,23 @@ def normalizar_texto(texto):
     )
 
     return texto
+
+
+def criar_texto_busca(ave):
+    # Lista temporária que guardará os valores dos campos pesquisáveis.
+    valores = []
+
+    # Percorre cada campo definido em CAMPOS_BUSCA.
+    for campo in CAMPOS_BUSCA:
+        # Busca o valor do campo no dicionário da ave.
+        # Se o campo não existir, usa texto vazio.
+        valores.append(str(ave.get(campo, "")))
+
+    # Junta todos os valores em um único texto.
+    texto = " ".join(valores)
+
+    # Normaliza o texto para facilitar a busca.
+    return normalizar_texto(texto)
 
 
 def buscar_aves_por_nome(catalogo, termo_busca):
@@ -110,23 +114,30 @@ def buscar_aves_por_nome(catalogo, termo_busca):
 
 
 def buscar_aves(catalogo, termo_busca):
+    # Lista que receberá as aves encontradas.
     resultados = []
 
+    # Normaliza o termo digitado pelo usuário.
     termo = normalizar_texto(termo_busca)
 
+    # Percorre todas as aves.
     for ave in catalogo:
-        campos_busca = [
-            ave.get(campo, "")
-            for campo in CAMPOS_BUSCA
-        ]
+        # Cria o texto pesquisável da ave.
+        texto_busca = criar_texto_busca(ave)
 
-        texto_busca = " ".join(campos_busca)
-        texto_busca = normalizar_texto(texto_busca)
-
+        # Se o termo estiver no texto, adiciona a ave aos resultados.
         if termo in texto_busca:
             resultados.append(ave)
 
     return resultados
+
+
+def buscar_ave_por_id(catalogo, id_procurado):
+    for ave in catalogo:
+        if str(ave["id"]) == id_procurado:
+            return ave
+
+    return None
 
 
 def exibir_resultados_busca(resultados):
@@ -240,6 +251,13 @@ def tela_busca(catalogo):
                 mensagem_aviso("ID não encontrado nos resultados.")
             else:
                 exibir_detalhes_ave(ave_encontrada)
+
+
+def listar_aves(catalogo):
+    titulo("AVES CADASTRADAS")
+
+    for ave in catalogo:
+        print(f"{ave['id']} - {ave['nome_popular']}")
 
 
 def imprimir_linha_comparacao(rotulo, valor_1, valor_2):
