@@ -2,7 +2,7 @@
   "nome_dataset": "AveDex",
   "versao": "1.0",
   "descricao": "Dataset didático de aves para a disciplina de Boas Práticas de Programação.",
-  "total_aves": 3,
+  "total_aves": 5,
   "escala_indice_conservacao": {
     "LC": 1,
     "NT": 2,
@@ -84,6 +84,54 @@
       "habitat": "Campos e áreas abertas.",
       "alimentacao": "Sementes e pequenos insetos.",
       "curiosidade": "É bastante reconhecido pelo canto.",
+      "midia": {
+        "pagina_guia": null,
+        "fotografo": "",
+        "wikiaves_url": "",
+        "som_url": "",
+        "imagem_url": ""
+      }
+    },
+    {
+      "id": 4,
+      "slug": "tucano_toco",
+      "nome_popular": "Tucano-toco",
+      "nome_cientifico": "Ramphastos toco",
+      "ordem": "Piciformes",
+      "familia": "Ramphastidae",
+      "dieta_tipo": "Frugívoro",
+      "comprimento_cm": 56.0,
+      "peso_g": 540.0,
+      "status_conservacao": "LC",
+      "indice_conservacao": 1,
+      "descricao": "Maior espécie de tucano, reconhecido pelo grande bico alaranjado com uma mancha preta na ponta.",
+      "habitat": "Cerrado, mata de galeria e bordas de floresta.",
+      "alimentacao": "Frutas, insetos, ovos e pequenos vertebrados.",
+      "curiosidade": "Seu bico ajuda na regulação da temperatura corporal.",
+      "midia": {
+        "pagina_guia": null,
+        "fotografo": "",
+        "wikiaves_url": "",
+        "som_url": "",
+        "imagem_url": ""
+      }
+    },
+    {
+      "id": 5,
+      "slug": "carcara",
+      "nome_popular": "Carcará",
+      "nome_cientifico": "Caracara plancus",
+      "ordem": "Falconiformes",
+      "familia": "Falconidae",
+      "dieta_tipo": "Onívoro",
+      "comprimento_cm": 56.0,
+      "peso_g": 830.0,
+      "status_conservacao": "LC",
+      "indice_conservacao": 1,
+      "descricao": "Ave de rapina versátil com penacho preto na cabeça e peito estriado.",
+      "habitat": "Campos abertos, cerrados e margens de rodovias.",
+      "alimentacao": "Carcaças, pequenos animais, insetos e répteis.",
+      "curiosidade": "Costuma caminhar muito pelo chão em busca de alimento.",
       "midia": {
         "pagina_guia": null,
         "fotografo": "",
