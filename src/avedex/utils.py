@@ -19,9 +19,19 @@ def titulo(texto):
     print(linha("="))
 
 
+def mensagem_sucesso(texto):
+    # Mostra uma mensagem positiva para o usuário.
+    print(f"[OK] {texto}")
+
+
 def mensagem_aviso(texto):
-    # Exibe uma mensagem simples de aviso.
+    # Mostra uma mensagem de atenção.
     print(f"[AVISO] {texto}")
+
+
+def mensagem_erro(texto):
+    # Mostra uma mensagem de erro.
+    print(f"[ERRO] {texto}")
 
 
 def pausar():
