@@ -6,7 +6,7 @@ from src.avedex.catalogo import (
 
 from src.avedex.comparacao import comparar_aves
 from src.avedex.creditos import mostrar_creditos
-from src.avedex.dados import carregar_aves
+from src.avedex.dados import carregar_aves, validar_dataset
 from src.avedex.interface import (
     abertura,
     exibir_menu_principal,
@@ -19,12 +19,37 @@ from src.avedex.utils import (
 
 
 def executar():
+    # Carrega a lista de aves a partir do JSON.
     aves = carregar_aves()
 
+    # Se a lista estiver vazia, não há o que exibir.
     if not aves:
-        mensagem_aviso("Nenhuma ave foi carregada.")
+        mensagem_aviso(
+            "Nenhuma ave foi carregada. "
+            "Verifique o arquivo do dataset."
+        )
         return
 
+    # Valida o conteúdo do dataset.
+    problemas = validar_dataset(aves)
+
+    # Se existirem problemas, mostramos todos e encerramos.
+    if len(problemas) > 0:
+        mensagem_aviso(
+            "Foram encontrados problemas no dataset:"
+        )
+
+        for problema in problemas:
+            print(f"- {problema}")
+
+        print()
+
+        mensagem_aviso(
+            "Corrija o arquivo JSON antes de continuar."
+        )
+        return
+
+    # Se chegou até aqui, os dados passaram pela validação.
     abertura(aves)
 
     while True:
