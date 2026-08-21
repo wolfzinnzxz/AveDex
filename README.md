@@ -68,3 +68,14 @@ O projeto aplica conceitos de boas práticas de programação, incluindo:
 * Entrada de dados mais defensiva.
 * Uso de constantes para campos obrigatórios.
 * Documentação do projeto por meio do README.
+
+## Testes defensivos realizados
+
+- [x] JSON carregado corretamente
+- [x] Arquivo JSON ausente
+- [x] JSON mal formatado
+- [x] Campo obrigatório ausente
+- [x] ID duplicado
+- [x] Campo numérico inválido
+- [x] Entrada inválida no ID
+- [x] Verificação de ambiente
