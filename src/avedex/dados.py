@@ -168,4 +168,10 @@ def validar_dataset(aves):
                 f"{identificacao}: nome_popular não pode estar vazio"
             )
 
+        # Valida slug vazio.
+        if str(ave.get("slug", "")).strip() == "":
+            problemas.append(
+                f"{identificacao}: slug não pode estar vazio"
+            )
+
     return problemas
