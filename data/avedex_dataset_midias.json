@@ -39,9 +39,9 @@
       "midia": {
         "pagina_guia": null,
         "fotografo": "",
-        "wikiaves_url": "",
-        "som_url": "",
-        "imagem_url": ""
+        "wikiaves_url": "https://www.wikiaves.com.br/wiki/bem-te-vi",
+        "som_url": "https://s3.amazonaws.com/media.wikiaves.com.br/recordings/52/25828_c87d5028235f4ca91e815d436b1ced18.mp3",
+        "imagem_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Pitangus_sulphuratus_%2830659959896%29.jpg/960px-Pitangus_sulphuratus_%2830659959896%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20181125205755"
       }
     },
     {
@@ -63,9 +63,9 @@
       "midia": {
         "pagina_guia": null,
         "fotografo": "",
-        "wikiaves_url": "",
-        "som_url": "",
-        "imagem_url": ""
+        "wikiaves_url": "https://www.wikiaves.com.br/wiki/joao-de-barro",
+        "som_url": "https://s3.amazonaws.com/media.wikiaves.com.br/recordings/64/46276_1cb15a237990c19c94ebe3e719f1dcc8.mp3",
+        "imagem_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxlyrO3vAmg-8ZQcgNQTTCS4ALVQnsMTpwv7eRzSpBAA&s=10"
       }
     },
     {
@@ -87,9 +87,9 @@
       "midia": {
         "pagina_guia": null,
         "fotografo": "",
-        "wikiaves_url": "",
-        "som_url": "",
-        "imagem_url": ""
+        "wikiaves_url": "https://www.wikiaves.com.br/wiki/canario-da-terra",
+        "som_url": "https://s3.amazonaws.com/media.wikiaves.com.br/recordings/221/122476_5ed1d7842d2f179a53091e450aa5dd2f.mp3",
+        "imagem_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2nGv92cKZNgZZ362FYO6hzrHTUcnXS4Yhgo9b8VBYUg&s=10"
       }
     },
     {
@@ -111,9 +111,9 @@
       "midia": {
         "pagina_guia": null,
         "fotografo": "",
-        "wikiaves_url": "",
-        "som_url": "",
-        "imagem_url": ""
+        "wikiaves_url": "https://www.wikiaves.com.br/wiki/tucanucu",
+        "som_url": "https://s3.amazonaws.com/media.wikiaves.com.br/recordings/95/59232_0468fdebddde4bb6a95b776edd96fc13.mp3",
+        "imagem_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOpGcig4Ue6WRNPylIXBHJ96P9Cyy7TZfXTbuxl2N9Q&s=10"
       }
     },
     {
@@ -135,9 +135,9 @@
       "midia": {
         "pagina_guia": null,
         "fotografo": "",
-        "wikiaves_url": "",
-        "som_url": "",
-        "imagem_url": ""
+        "wikiaves_url": "https://www.wikiaves.com.br/wiki/carcara",
+        "som_url": "https://s3.amazonaws.com/media.wikiaves.com.br/recordings/34/43969_59ffbb35b8f7a6e7a84287f121972fff.mp3",
+        "imagem_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn9cD00yUZJ2TnCS-0FZ20Qz22p6rXJRLwz110ZMYyIQ&s=10"
       }
     },
     {
@@ -159,9 +159,9 @@
       "midia": {
         "pagina_guia": null,
         "fotografo": "",
-        "wikiaves_url": "",
-        "som_url": "",
-        "imagem_url": ""
+        "wikiaves_url": "https://www.wikiaves.com.br/wiki/sabia-laranjeira",
+        "som_url": "https://s3.amazonaws.com/media.wikiaves.com.br/recordings/95/59269_c3a95f9da82f9313c2bee7184bb3b8ff.mp3",
+        "imagem_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUmqq7UAG8HpcxFEo8jeKrA-tuf87LaaicNDj_nzN5vA&s=10"
       }
     },
     {
@@ -183,9 +183,9 @@
       "midia": {
         "pagina_guia": null,
         "fotografo": "",
-        "wikiaves_url": "",
-        "som_url": "",
-        "imagem_url": ""
+        "wikiaves_url": "https://www.wikiaves.com.br/wiki/beija-flor-tesoura",
+        "som_url": "https://s3.amazonaws.com/media.wikiaves.com.br/recordings/85/58806_c6e22554811469a186b9a7c9f9fa05e2.mp3",
+        "imagem_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj-RDl1zZcITFMRtntxFTkuJp-_JI-LMiGvlEe_e0fMQ&s=10"
       }
     },
     {
@@ -206,10 +206,10 @@
       "curiosidade": "É conhecida por correr em alta velocidade enquanto procura árvores para bicar.",
       "midia": {
         "pagina_guia": null,
-        "fotografo": "",
-        "wikiaves_url": "",
+        "fotografo": "Farofeiros",
+        "wikiaves_url": "https://farofeiros.com.br/pica-sonica-a-origem/",
         "som_url": "",
-        "imagem_url": ""
+        "imagem_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF0lAwWlyBggkg8V7XhzAbLTPNDL_Au-1DLrZgkHKH0g&s=10"
       }
     }
   ]
