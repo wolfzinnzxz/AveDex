@@ -6,7 +6,8 @@ OPCOES_MENU = [
     "2 - Buscar ave",
     "3 - Ver detalhes de uma ave",
     "4 - Comparar duas aves",
-    "5 - Créditos e fontes",
+    "5 - Créditos e informações",
+    "6 - Verificar ambiente",
     "0 - Sair",
 ]
 

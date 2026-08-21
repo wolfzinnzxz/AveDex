@@ -1,3 +1,5 @@
+from src.avedex.ambiente import verificar_ambiente
+
 from src.avedex.catalogo import (
     listar_aves,
     buscar_aves,
@@ -77,6 +79,10 @@ def executar():
 
         elif opcao == "5":
             mostrar_creditos()
+            pausar()
+
+        elif opcao == "6":
+            verificar_ambiente()
             pausar()
 
         elif opcao == "0":
