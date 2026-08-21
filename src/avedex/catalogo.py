@@ -30,15 +30,46 @@ def buscar_ave_por_id(aves, id_procurado):
     return None
 
 
+def ler_id_ave(mensagem):
+    # Lê o valor digitado pelo usuário.
+    entrada = input(mensagem).strip()
+
+    # Se o usuário apenas apertar ENTER, cancelamos a seleção.
+    if entrada == "":
+        return None
+
+    # Verifica se todos os caracteres são dígitos.
+    if not entrada.isdigit():
+        mensagem_aviso("Digite apenas números para o ID.")
+        return None
+
+    return entrada
+
+
 def escolher_ave(aves, mensagem="Escolha uma ave"):
+    # Mostra as aves disponíveis.
     listar_aves(aves)
 
-    id_escolhido = input(f"\n{mensagem}: ").strip()
+    # Lê o ID de forma mais defensiva.
+    id_escolhido = ler_id_ave(
+        f"\n{mensagem}: "
+    )
 
-    ave_encontrada = buscar_ave_por_id(aves, id_escolhido)
+    # Se o usuário não digitou um ID válido, encerramos a escolha.
+    if id_escolhido is None:
+        return None
 
+    # Busca a ave pelo ID informado.
+    ave_encontrada = buscar_ave_por_id(
+        aves,
+        id_escolhido
+    )
+
+    # Se o ID não existir, avisamos o usuário.
     if ave_encontrada is None:
-        mensagem_aviso("Ave não encontrada. Confira o ID informado.")
+        mensagem_aviso(
+            "Ave não encontrada. Confira o ID informado."
+        )
         return None
 
     return ave_encontrada
@@ -93,11 +124,26 @@ def mostrar_detalhes(ave):
 
     print()
     print("Mídia")
-    print(f"Página no guia: {midia.get('pagina_guia', 'Não informado')}")
-    print(f"Fotógrafo: {midia.get('fotografo', 'Não informado')}")
-    print(f"WikiAves: {midia.get('wikiaves_url', 'Não informado')}")
-    print(f"Som: {midia.get('som_url', 'Não informado')}")
-    print(f"Imagem: {midia.get('imagem_url', 'Não informado')}")
+    print(
+        f"Página no guia: "
+        f"{midia.get('pagina_guia', 'Não informado')}"
+    )
+    print(
+        f"Fotógrafo: "
+        f"{midia.get('fotografo', 'Não informado')}"
+    )
+    print(
+        f"WikiAves: "
+        f"{midia.get('wikiaves_url', 'Não informado')}"
+    )
+    print(
+        f"Som: "
+        f"{midia.get('som_url', 'Não informado')}"
+    )
+    print(
+        f"Imagem: "
+        f"{midia.get('imagem_url', 'Não informado')}"
+    )
 
 
 def tela_detalhes(aves):
